@@ -1,4 +1,4 @@
-import { addStory } from "@/app/dashboard/stories/actions";
+import { addStory } from "@/app/(admin)/stories/actions";
 
 export default function AddStory() {
   async function handleSubmit(formData: FormData) {
@@ -6,7 +6,6 @@ export default function AddStory() {
     const title = formData.get("title") as string;
     const content = formData.get("content") as string;
     await addStory({ title, content });
-    // Optionally, redirect or show a message
   }
 
   return (
