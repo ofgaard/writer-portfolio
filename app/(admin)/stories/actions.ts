@@ -1,14 +1,22 @@
 "use server";
 import { createClient } from "@/lib/supabase/server";
 
-async function addStory(data: { title: string; content: string }) {
+interface StoryData {
+  title: string;
+  content: string;
+  image?: string;
+  url?: string;
+  tag?: string;        
+  custom_tag?: string; 
+};
+
+async function addStory(data: StoryData) {
   const supabase = await createClient();
   const { error } = await supabase.from("stories").insert([data]);
   if (error) {
     throw new Error("Error adding story");
   }
 }
-
 async function addStoryToRow(position: number, storyId: number) {
   const supabase = await createClient();
 

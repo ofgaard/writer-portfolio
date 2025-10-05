@@ -17,7 +17,7 @@ export default function StoriesAccordion() {
         <AccordionContent>
           <ul className="ml-4 mt-2 flex flex-col space-y-2 text-base font-normal">
             <li>
-                <Link href="/dashboard/stories">All Stories</Link>
+                <Link href="/stories">All Stories</Link>
             </li>
             <li>
               <Link href="/dashboard/stories/reporting">Reporting</Link>

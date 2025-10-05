@@ -26,7 +26,7 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
   ]
 
   return (
-    <div className="flex items-center border rounded-md p-2 mb-1 space-x-2 z-50">
+    <div className="flex items-center border rounded-md mb-1 space-x-2">
       {Options.map((option, index) => (
         <Toggle key={index}
         pressed={option.isActive}
