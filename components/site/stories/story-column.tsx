@@ -11,27 +11,14 @@ type Story = {
   custom_tag?: string | null; 
 };
 
-export default function StoryGrid({ stories }: { stories: Story[] }) {
-  // Calculate the width class based on number of stories
-  const getWidthClass = () => {
-    switch (stories.length) {
-      case 1:
-        return "md:w-full"; // Single story takes full width
-      case 2:
-        return "md:w-1/2"; // Two stories take half width each
-      case 3:
-      default:
-        return "md:w-1/3"; // Three stories take third width each
-    }
-  };
-
+export default function StoryColumn({ stories }: { stories: Story[] }) {
   return (
-    <div className="flex flex-col md:flex-row justify-between w-full lg:w-[70%] gap-3 mt-10 mx-auto">
+    <div className="flex flex-col gap-6 w-full max-w-4xl mx-auto">
       {stories.map((story) => (
         <Link
           key={story.id}
           href={`/stories/${story.id}`}
-          className={`p-4 w-full ${getWidthClass()} flex flex-col gap-3 text-center`}
+          className="p-6 w-full flex flex-col gap-4 text-center rounded-lg hover:shadow-lg transition-shadow"
         >
           <Image
             src={
@@ -41,7 +28,7 @@ export default function StoryGrid({ stories }: { stories: Story[] }) {
             alt={story.title || 'Story image'}
             width={500}
             height={300}
-            className="object-center w-full h-48 object-cover"
+            className="object-center w-full h-64 object-cover rounded"
           />
           <p className="text-blue-400 font-extrabold">
             {story.custom_tag}
@@ -49,8 +36,8 @@ export default function StoryGrid({ stories }: { stories: Story[] }) {
           <h2 className="text-2xl font-extrabold">
             {story.title}
           </h2>
-          <p>
-            {story.content.slice(0, 100) + "..."}
+          <p className="text-muted-foreground">
+            {story.content.slice(0, 150) + "..."}
           </p>
         </Link>
       ))}

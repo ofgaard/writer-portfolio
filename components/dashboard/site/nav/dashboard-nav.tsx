@@ -8,7 +8,7 @@ const DashboardNav = () => {
         <UserMenu />
       <ul className="flex flex-col text-lg space-y-6 font-bold">
         <li>
-          <Link href="/add-story">New Entry</Link>
+          <Link href="/dashboard/add-story">New Entry</Link>
         </li>
         <li>
           <StoriesAccordion />

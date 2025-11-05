@@ -1,12 +1,18 @@
 
+import Link from "next/link";
 
 const Nav = () => {
   return <nav className="flex justify-center border-b">
     <ul className={`flex text-xl space-x-10 p-4 font-bold`}>
-      <li>Reporting</li>
-        <li>Press & Communication</li>
-        <li>Profile</li>
-
+      <li>
+        <Link href="/reporting" className="hover:text-muted-foreground">Reporting</Link>
+      </li>
+      <li>
+        <Link href="/press" className="hover:text-muted-foreground">Press & Communication</Link>
+      </li>
+      <li>
+        <Link href="/profile" className="hover:text-muted-foreground">Profile</Link>
+      </li>
     </ul>
   </nav>;
 }

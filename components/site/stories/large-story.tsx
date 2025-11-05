@@ -1,35 +1,39 @@
 import Link from "next/link";
+import Image from "next/image";
 
 type Story = {
   id: number;
   title: string;
   content: string;
-  frontpageTitle?: string;
-  frontpageDescription?: string;
-  frontpageImage?: string;
+  image?: string | null;
+  url?: string | null;
+  tag?: string | null;       
+  custom_tag?: string | null; 
 };
 
 export default function LargeStory({ story }: { story: Story }) {
   return (
-    <Link href={`/stories/${story.id}`} className="block">
+    <Link href={`/stories/${story.id}`} className="block w-full">
       <div className="flex flex-col md:flex-row justify-between w-full lg:w-[70%] h-auto md:h-96 p-5 mx-auto">
         <div className="w-full md:w-1/2">
-          <img
+          <Image
             src={
-              story.frontpageImage ||
-              "https://placehold.co/600x400?text=No+Image"
+              story.image ||
+              "https://picsum.photos/500/300"
             }
+            alt={story.title}
+            width={500}
+            height={300}
             className="object-cover h-64 md:h-full w-full"
-            alt={story.frontpageDescription || story.title}
           />
         </div>
-        <div className="w-full md:w-3/6 text-center flex flex-col gap-6 p-5">
-          <p className="font-extrabold">ARTICLE SERIES</p>
+        <div className="w-full md:w-1/2 text-center flex flex-col gap-6 p-5">
+          <p className="font-extrabold">{story.custom_tag?.toUpperCase() || "ARTICLE SERIES"}</p>
           <h1 className="text-3xl font-extrabold">
-            {story.frontpageTitle || story.title}
+            {story.title}
           </h1>
           <p>
-            {story.frontpageDescription || story.content.slice(0, 120) + "..."}
+            {story.content.slice(0, 120) + "..."}
           </p>
         </div>
       </div>
