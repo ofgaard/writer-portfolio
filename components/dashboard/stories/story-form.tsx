@@ -26,7 +26,8 @@ export default function StoryForm({ initialData, onSubmit, submitLabel = "Submit
       url: formData.get("url") as string,
       tag: formData.get("tag") as string,
       custom_tag: formData.get("custom_tag") as string,
-      image: imageUrl
+      image: imageUrl,
+      subheader: formData.get("subheader") as string
     });
   };
 
@@ -58,8 +59,8 @@ export default function StoryForm({ initialData, onSubmit, submitLabel = "Submit
         defaultValue={initialData?.tag}
         className="border rounded w-full p-2"
       >
-        <option value="journalism">Journalism</option>
-        <option value="press">Press</option>
+        <option value="Journalism">Journalism</option>
+        <option value="Press">Press</option>
       </select>
       <input 
         type="text" 
@@ -67,6 +68,12 @@ export default function StoryForm({ initialData, onSubmit, submitLabel = "Submit
         defaultValue={initialData?.custom_tag}
         className="border rounded w-full p-2" 
         placeholder="Label (e.g. Analysis, Election 2025 etc.)" 
+      />
+      <input type="text"
+      name="subheader"
+      defaultValue={initialData?.subheader}
+      className="border rounded w-full p-2"
+      placeholder="Subheader (optional)"
       />
       <TextEditor content={post} onChange={setPost} />
       <div className="mt-4 flex justify-end space-x-2">

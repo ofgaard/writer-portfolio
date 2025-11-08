@@ -1,15 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Story } from "@/lib/types/story";
 
-type Story = {
-  id: number;
-  title: string;
-  content: string;
-  image?: string | null;
-  url?: string | null;
-  tag?: string | null;        
-  custom_tag?: string | null; 
-};
 
 export default function StoryGrid({ stories }: { stories: Story[] }) {
   // Calculate the width class based on number of stories
@@ -43,14 +35,14 @@ export default function StoryGrid({ stories }: { stories: Story[] }) {
             height={300}
             className="object-center w-full h-48 object-cover"
           />
-          <p className="text-blue-400 font-extrabold">
+          <p className="font-extrabold uppercase">
             {story.custom_tag}
           </p>
           <h2 className="text-2xl font-extrabold">
             {story.title}
           </h2>
           <p>
-            {story.content.slice(0, 100) + "..."}
+            {story.subheader}
           </p>
         </Link>
       ))}

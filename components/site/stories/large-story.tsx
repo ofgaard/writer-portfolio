@@ -33,7 +33,7 @@ export default function LargeStory({ story }: { story: Story }) {
             {story.title}
           </h1>
           <p>
-            {story.content.slice(0, 120) + "..."}
+            {story.subheader}
           </p>
         </div>
       </div>

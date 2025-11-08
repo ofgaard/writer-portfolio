@@ -1,15 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Story } from "@/lib/types/story";
 
-type Story = {
-  id: number;
-  title: string;
-  content: string;
-  image?: string | null;
-  url?: string | null;
-  tag?: string | null;        
-  custom_tag?: string | null; 
-};
+
 
 export default function StoryColumn({ stories }: { stories: Story[] }) {
   return (
@@ -37,7 +30,7 @@ export default function StoryColumn({ stories }: { stories: Story[] }) {
             {story.title}
           </h2>
           <p className="text-muted-foreground">
-            {story.content.slice(0, 150) + "..."}
+            {story.subheader}
           </p>
         </Link>
       ))}

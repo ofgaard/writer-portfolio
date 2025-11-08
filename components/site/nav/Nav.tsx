@@ -5,10 +5,10 @@ const Nav = () => {
   return <nav className="flex justify-center border-b">
     <ul className={`flex text-xl space-x-10 p-4 font-bold`}>
       <li>
-        <Link href="/reporting" className="hover:text-muted-foreground">Reporting</Link>
+        <Link href="/stories/reporting" className="hover:text-muted-foreground">Reporting</Link>
       </li>
       <li>
-        <Link href="/press" className="hover:text-muted-foreground">Press & Communication</Link>
+        <Link href="/stories/press" className="hover:text-muted-foreground">Press & Communication</Link>
       </li>
       <li>
         <Link href="/profile" className="hover:text-muted-foreground">Profile</Link>
