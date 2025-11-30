@@ -21,7 +21,7 @@ export default function StoryColumn({ stories }: { stories: Story[] }) {
             alt={story.title || 'Story image'}
             width={500}
             height={300}
-            className="object-center w-full h-64 object-cover rounded"
+            className="object-center w-full h-96 object-cover rounded"
           />
           <p className="text-blue-400 font-extrabold">
             {story.custom_tag}
