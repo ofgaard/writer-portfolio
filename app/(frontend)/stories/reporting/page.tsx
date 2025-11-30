@@ -7,8 +7,8 @@ export default async function ReportingPage() {
   try {
     stories = await getStories("Journalism");
   } catch (error) {
-    console.error("Failed to load reporting stories:", error);
-    return <div>Error loading reporting stories.</div>;
+    console.error("Failed to load stories:", error);
+    return <div>Error loading stories.</div>;
   }
 
   return (
@@ -21,7 +21,7 @@ export default async function ReportingPage() {
         <StoryColumn stories={stories} />
       ) : (
         <div className="text-center text-muted-foreground">
-          No reporting stories found.
+          No stories found.
         </div>
       )}
     </div>
