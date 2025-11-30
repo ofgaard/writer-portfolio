@@ -24,7 +24,6 @@ export default function StoryPosition({ storyId, currentPosition }: StoryPositio
     try {
       const formData = new FormData();
       formData.append("storyId", storyId.toString());
-      // Convert "none" to null for the database
       formData.append("position", newPosition === "none" ? "null" : newPosition);
       await handleUpdatePosition(formData);
     } catch (error) {

@@ -20,7 +20,6 @@ export async function getStories(tag?: string) {
     .select("*")
     .order("created_at", { ascending: false });
 
-  // Add tag filter if provided
   if (tag) {
     query = query.eq("tag", tag);
   }

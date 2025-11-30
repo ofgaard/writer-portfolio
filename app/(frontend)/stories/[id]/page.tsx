@@ -34,8 +34,10 @@ export default async function StoryPage({ params }: { params: { id: string } }) 
         )}
       </div>
       <div className="text-xl lg:text-2xl max-w-[80%] md:max-w-[50%] mt-10 mx-auto">
-        <p className="mb-10 text-lg font-mono">This story was originally published in B.T. This is a nicer looking, ad-free version. To read the original, <a href={story.url?.startsWith('http') ? story.url : `https://${story.url}`} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">click here</a>.</p>
-        <p>{story.content}</p>
+        <p className="mb-10 text-lg font-mono">This story was originally published elsewhere. This is a nicer looking, ad-free version. To read the original, <a href={story.url?.startsWith('http') ? story.url : `https://${story.url}`} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">click here</a>.</p>
+        <div className="whitespace-pre-line">
+          {story.content}
+        </div>
       </div>
     </div>
   );

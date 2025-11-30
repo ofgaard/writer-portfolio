@@ -47,7 +47,7 @@ export default function StoryCard({ story }: { story: Story }) {
     }
   };
 
-  // Helper function to get position display text
+
   const getPositionDisplay = (position: number | null, rowPosition: number | null) => {
     if (!position) return "None";
     const positionNames = ['', 'Left', 'Middle', 'Right'];
@@ -55,7 +55,7 @@ export default function StoryCard({ story }: { story: Story }) {
     return `Row ${position}${positionText ? ` - ${positionText}` : ''}`;
   };
 
-  // Helper function to get current position value for select
+
   const getCurrentPositionValue = () => {
     if (!story.position) return "none";
     if (!story.row_position) return story.position.toString();
@@ -67,7 +67,6 @@ export default function StoryCard({ story }: { story: Story }) {
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value={`story-${story.id}`} className="border-none">
           <div className="flex flex-col">
-            {/* Static card content */}
             <div className="flex flex-col gap-5">
               <div className="relative h-48 w-full">
                 <Image
@@ -94,7 +93,6 @@ export default function StoryCard({ story }: { story: Story }) {
               </CardContent>
             </div>
             
-            {/* Expandable trigger at the bottom */}
             <AccordionTrigger className="hover:no-underline px-6 py-3 text-sm text-muted-foreground">
               Show options
             </AccordionTrigger>
@@ -139,7 +137,7 @@ export default function StoryCard({ story }: { story: Story }) {
                     </SelectContent>
                   </Select>
                   <p className="text-xs text-muted-foreground">
-                    Choose the exact position for your story on the frontpage.
+                    Choose the position for your story on the frontpage.
                   </p>
                 </div>
 

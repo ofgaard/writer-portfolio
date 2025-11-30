@@ -12,6 +12,9 @@ export default function TextEditor({ content, onChange }: TextEditorProps) {
   const editor = useEditor({
     extensions: [StarterKit],
     content: content,
+    parseOptions: {
+      preserveWhitespace: "full",
+    },
     editorProps: {
       attributes: {
         class: "min-h-[200px] border rounded-md py-2 px-3"

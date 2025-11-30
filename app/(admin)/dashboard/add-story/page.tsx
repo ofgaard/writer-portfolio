@@ -7,7 +7,7 @@ export default function AddStoryPage() {
   async function handleCreate(data: Partial<Story>) {
     "use server";
     
-    // Ensure required fields are present
+
     if (!data.title || !data.content) {
       throw new Error("Title and content are required");
     }

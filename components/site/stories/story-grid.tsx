@@ -4,16 +4,13 @@ import { Story } from "@/lib/types/story";
 
 
 export default function StoryGrid({ stories }: { stories: Story[] }) {
-  // Calculate the width class based on number of stories
   const getWidthClass = () => {
-    switch (stories.length) {
-      case 1:
-        return "md:w-full"; // Single story takes full width
-      case 2:
-        return "md:w-1/2"; // Two stories take half width each
-      case 3:
-      default:
-        return "md:w-1/3"; // Three stories take third width each
+    if (stories.length === 1) {
+      return "md:w-full"; 
+    } else if (stories.length === 2) {
+      return "md:w-1/2"; 
+    } else {
+      return "md:w-1/3";
     }
   };
 
@@ -33,7 +30,7 @@ export default function StoryGrid({ stories }: { stories: Story[] }) {
             alt={story.title || 'Story image'}
             width={500}
             height={300}
-            className="object-center w-full h-48 object-cover"
+            className="object-center w-full h-56 md:h-72 object-cover"
           />
           <p className="font-extrabold uppercase">
             {story.custom_tag}
