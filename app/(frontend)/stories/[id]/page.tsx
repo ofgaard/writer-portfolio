@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import Image from "next/image";
 
 export default async function StoryPage({ params }: { params: { id: string } }) {
   const supabase = await createClient();
@@ -21,16 +22,21 @@ export default async function StoryPage({ params }: { params: { id: string } }) 
             <p>{story.tag}</p>
           </div>
           <h1 className="text-7xl">{story.title}</h1>
-          <div className="text-2xl max-w-sm">
+          <div className="text-2xl">
             <p>{story.custom_tag && <span className="font-extrabold">{story.custom_tag}.</span>} {story.subheader}</p>
           </div>
         </div>
           {story.image && (
-          <img 
-            src={story.image} 
-            alt={story.title} 
-            className="w-full md:w-1/2 h-full object-cover"
-          />  
+          <div className="relative w-full md:w-1/2 h-full">
+            <Image 
+              src={story.image} 
+              alt={story.title}
+              fill
+              quality={100}
+              priority
+              className="object-cover"
+            />
+          </div>
         )}
       </div>
       <div className="text-xl lg:text-2xl max-w-[80%] md:max-w-[50%] mt-10 mx-auto">
