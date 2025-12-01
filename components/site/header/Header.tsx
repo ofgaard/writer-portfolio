@@ -1,12 +1,7 @@
-import { Lora } from "next/font/google";
 import { Cormorant_Garamond } from "next/font/google";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import MobileNav from "@/components/site/nav/mobile-nav";
 import Link from "next/link";
-const lora = Lora({
-    subsets: ["latin"],
-    weight: ["400", "500", "700"],
-});
 const cormorantGaramond = Cormorant_Garamond({
     subsets: ["latin"],
     weight: ["400", "500", "700"],

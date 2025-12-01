@@ -50,13 +50,13 @@ export default function StoryForm({ initialData, onSubmit, submitLabel = "Submit
       <input 
         type="text" 
         name="url" 
-        defaultValue={initialData?.url}
+        defaultValue={initialData?.url || ''}
         className="border rounded w-full p-2" 
         placeholder="URL" 
       />
       <select 
         name="tag" 
-        defaultValue={initialData?.tag}
+        defaultValue={initialData?.tag || ''}
         className="border rounded w-full p-2"
       >
         <option value="Journalism">Journalism</option>
@@ -65,13 +65,13 @@ export default function StoryForm({ initialData, onSubmit, submitLabel = "Submit
       <input 
         type="text" 
         name="custom_tag" 
-        defaultValue={initialData?.custom_tag}
+        defaultValue={initialData?.custom_tag || ''}
         className="border rounded w-full p-2" 
         placeholder="Label (e.g. Analysis, Election 2025 etc.)" 
       />
       <input type="text"
       name="subheader"
-      defaultValue={initialData?.subheader}
+      defaultValue={initialData?.subheader || ''}
       className="border rounded w-full p-2"
       placeholder="Subheader (optional)"
       />

@@ -1,16 +1,20 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 interface UploadImageProps {
   onUploadComplete?: (url: string) => void;
+  currentImage?: string;
 }
 
-export default function UploadImage({ onUploadComplete }: UploadImageProps) {
+export default function UploadImage({ onUploadComplete, currentImage }: UploadImageProps) {
   const [file, setFile] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string>("");
   const [loading, setLoading] = useState(false);
+
+  const displayImage = imageUrl || currentImage;
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -61,12 +65,14 @@ export default function UploadImage({ onUploadComplete }: UploadImageProps) {
 </div>
     
      
-      {imageUrl && (
+      {displayImage && (
         <div className="mt-4">
-          <img 
-            src={imageUrl} 
+          <Image 
+            src={displayImage} 
             alt="Preview" 
-            className="max-h-32 rounded shadow"
+            width={128}
+            height={128}
+            className="max-h-32 rounded shadow object-cover"
           />
         </div>
       )}

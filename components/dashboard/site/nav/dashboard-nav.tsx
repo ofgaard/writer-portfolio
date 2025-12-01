@@ -14,7 +14,7 @@ const DashboardNav = () => {
           <StoriesAccordion />
         </li>
         <li>
-          <Link href="/dashboard/profile/edit">Public Profile</Link>
+          <Link href="/dashboard/profile/">Public Profile</Link>
         </li>
       </ul>
     </nav>

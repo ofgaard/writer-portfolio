@@ -11,7 +11,7 @@ export default function StoryColumn({ stories }: { stories: Story[] }) {
         <Link
           key={story.id}
           href={`/stories/${story.id}`}
-          className="p-6 w-full flex flex-col gap-4 text-center rounded-lg hover:shadow-lg transition-shadow"
+          className="p-6 w-full flex flex-col gap-4 text-center rounded-lg"
         >
           <Image
             src={
@@ -23,8 +23,8 @@ export default function StoryColumn({ stories }: { stories: Story[] }) {
             height={300}
             className="object-center w-full h-96 object-cover rounded"
           />
-          <p className="text-blue-400 font-extrabold">
-            {story.custom_tag}
+          <p className="font-extrabold">
+            {story.custom_tag?.toUpperCase()}
           </p>
           <h2 className="text-2xl font-extrabold">
             {story.title}

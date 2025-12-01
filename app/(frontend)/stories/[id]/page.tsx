@@ -1,12 +1,13 @@
 import { createClient } from "@/lib/supabase/server";
 import Image from "next/image";
 
-export default async function StoryPage({ params }: { params: { id: string } }) {
+export default async function StoryPage({ params }: { params: Promise<{ id: string }> }) {
   const supabase = await createClient();
+  const { id } = await params;
   const { data: story, error } = await supabase
     .from("stories")
     .select("id, title, content, created_at, image, url, tag, custom_tag, subheader")
-    .eq("id", params.id)
+    .eq("id", id)
     .single();
 
 
@@ -22,7 +23,7 @@ export default async function StoryPage({ params }: { params: { id: string } }) 
             <p>{story.tag}</p>
           </div>
           <h1 className="text-7xl">{story.title}</h1>
-          <div className="text-2xl">
+          <div className="text-2xl mt-10">
             <p>{story.custom_tag && <span className="font-extrabold">{story.custom_tag}.</span>} {story.subheader}</p>
           </div>
         </div>

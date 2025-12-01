@@ -8,7 +8,8 @@ type Story = {
   image?: string | null;
   url?: string | null;
   tag?: string | null;       
-  custom_tag?: string | null; 
+  custom_tag?: string | null;
+  subheader?: string | null;
 };
 
 export default function LargeStory({ story }: { story: Story }) {
@@ -28,7 +29,7 @@ export default function LargeStory({ story }: { story: Story }) {
           />
         </div>
         <div className="w-full md:w-1/2 text-center flex flex-col gap-6 p-5">
-          <p className="font-extrabold">{story.custom_tag?.toUpperCase() || "ARTICLE SERIES"}</p>
+          <p className="font-extrabold">{story.custom_tag?.toUpperCase()}</p>
           <h1 className="text-3xl font-extrabold">
             {story.title}
           </h1>

@@ -2,23 +2,25 @@ import { createClient } from "@/lib/supabase/server";
 import StoryForm from "@/components/dashboard/stories/story-form";
 import { updateStory } from "../../actions";
 import { redirect } from "next/navigation";
+import { StoryData } from "@/lib/types/story";
 
-export default async function EditStoryPage({ params }: { params: { id: string } }) {
+export default async function EditStoryPage({ params }: { params: Promise<{ id: string }> }) {
   const supabase = await createClient();
+  const { id } = await params;
   
   const { data: story, error } = await supabase
     .from("stories")
     .select("*")
-    .eq("id", params.id)
+    .eq("id", id)
     .single();
 
   if (error || !story) {
     return <div>Story not found</div>;
   }
 
-  async function handleUpdate(data: Partial<Story>) {
+  async function handleUpdate(data: Partial<StoryData>) {
     "use server";
-    await updateStory(parseInt(params.id), data);
+    await updateStory(parseInt(id), data);
     redirect("/dashboard/stories");
   }
 

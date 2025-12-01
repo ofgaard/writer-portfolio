@@ -4,12 +4,13 @@ import { createClient } from "@/lib/supabase/server";
 interface StoryData {
   title: string;
   content: string;
-  image?: string;
-  url?: string;
-  tag?: string;
-  custom_tag?: string;
+  image?: string | null;
+  url?: string | null;
+  tag?: string | null;
+  custom_tag?: string | null;
   position?: number | null;
   row_position?: number | null;
+  subheader?: string | null;
 };
 
 async function updatePosition(storyId: number, position: number | null, rowPosition: number | null = null) {

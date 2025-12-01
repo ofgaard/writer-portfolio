@@ -7,6 +7,7 @@ import { useState } from "react";
 import {
   Sheet,
   SheetContent,
+  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 
@@ -28,6 +29,9 @@ const MobileNav = () => {
       <SheetContent side="right" className={`${cormorantGaramond.className} pl-10`}>
         <nav className="mt-8">
           <ul className="flex flex-col space-y-6 text-xl font-bold">
+            <li>
+              <SheetTitle> <Link href="/home" onClick={() => setOpen(false)}>Home</Link> </SheetTitle>
+            </li>
             <li>
               <Link href="/stories/reporting" className="hover:text-muted-foreground" onClick={() => setOpen(false)}>
                 Reporting

@@ -1,5 +1,7 @@
+"use client";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const user = {
   name: "Oliver",
@@ -7,7 +9,13 @@ const user = {
 };
 
 export default function UserMenu() {
+  const router = useRouter();
   const firstLetter = user.name ? user.name[0].toUpperCase() : "?";
+
+  const handleLogout = async () => {
+    await fetch("/api/logout", { method: "POST" });
+    router.push("/auth/login");
+  };
 
   return (
     <DropdownMenu>
@@ -26,10 +34,10 @@ export default function UserMenu() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href="/profile">Profile</Link>
+          <Link href="/dashboard/profile">Profile</Link>
         </DropdownMenuItem>
-        <DropdownMenuItem asChild>
-          <Link href="/logout">Logout</Link>
+        <DropdownMenuItem onClick={handleLogout}>
+          Logout
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
