@@ -17,18 +17,21 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex flex-col md:flex-row gap-6 border-b h-screen">
+      <div className="flex flex-col md:flex-row gap-6 border-b md:h-screen">
         <div className="flex flex-col gap-3 items-center text-center justify-center p-10 w-full md:w-1/2">
           <div className="text-sm uppercase font-bold">
             <p>{story.tag}</p>
           </div>
+          <div className="text-xl md:hidden">
+            <p>{story.custom_tag && <span className="font-extrabold">{story.custom_tag}.</span>} {story.subheader}</p>
+          </div>
           <h1 className="text-4xl md:text-7xl">{story.title}</h1>
-          <div className="text-2xl mt-10">
+          <div className="text-2xl mt-10 hidden md:block">
             <p>{story.custom_tag && <span className="font-extrabold">{story.custom_tag}.</span>} {story.subheader}</p>
           </div>
         </div>
           {story.image && (
-          <div className="relative w-full hidden md:block h-full">
+          <div className="relative w-full hidden md:block md:w-1/2 h-full">
             <Image 
               src={story.image} 
               alt={story.title}
