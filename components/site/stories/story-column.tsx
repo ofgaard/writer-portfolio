@@ -22,6 +22,7 @@ export default function StoryColumn({ stories }: { stories: Story[] }) {
             width={500}
             height={300}
             className="object-center w-full h-96 object-cover rounded"
+            priority
           />
           <p className="font-extrabold">
             {story.custom_tag?.toUpperCase()}

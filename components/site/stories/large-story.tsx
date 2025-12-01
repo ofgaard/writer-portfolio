@@ -15,7 +15,7 @@ type Story = {
 export default function LargeStory({ story }: { story: Story }) {
   return (
     <Link href={`/stories/${story.id}`} className="block w-full">
-      <div className="flex flex-col md:flex-row justify-between w-full lg:w-[70%] h-auto md:h-96 p-5 mx-auto">
+      <div className="flex flex-col md:flex-row justify-between w-full lg:w-[70%] h-auto md:h-96 p-4 md:p-5 mx-auto">
         <div className="w-full md:w-1/2">
           <Image
             src={
@@ -26,6 +26,7 @@ export default function LargeStory({ story }: { story: Story }) {
             width={500}
             height={300}
             className="object-cover h-64 md:h-full w-full"
+            priority
           />
         </div>
         <div className="w-full md:w-1/2 text-center flex flex-col gap-6 p-5">

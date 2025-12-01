@@ -2,7 +2,7 @@
 import Link from "next/link";
 
 const Nav = () => {
-  return <nav className="flex justify-center border-b">
+  return <nav className="hidden md:flex justify-center border-b">
     <ul className={`flex text-xl space-x-10 p-4 font-bold`}>
       <li>
         <Link href="/stories/reporting" className="hover:text-muted-foreground">Reporting</Link>
