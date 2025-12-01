@@ -5,23 +5,10 @@ import { Linkedin, Facebook, Instagram } from "lucide-react";
 export default async function ProfilePage() {
   const supabase = await createClient();
   
-  const { data: { user } } = await supabase.auth.getUser();
-  
-  if (!user) {
-    return (
-      <div className="flex flex-col gap-8 max-w-4xl mx-auto px-4 py-8">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Profile</h1>
-          <p>Please log in to view your profile.</p>
-        </div>
-      </div>
-    );
-  }
-
   const { data: profile } = await supabase
     .from("profiles")
     .select("*")
-    .eq("user_id", user.id)
+    .limit(1)
     .single();
 
   if (!profile) {
@@ -49,7 +36,7 @@ export default async function ProfilePage() {
           />
         )}
         
-        <div className="flex-1 flex flex-col gap-6 text-center md:text-left">
+        <div className="flex-1 flex flex-col gap-6 text-center md:text-left items-center md:items-start">
           {profile.header && (
             <h1 className="text-4xl font-bold">{profile.header}</h1>
           )}
