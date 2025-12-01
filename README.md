@@ -1,10 +1,10 @@
-✍️ **Writer Portfolio — Built with Next.js & Supabase**
+**Writer Portfolio — Built with Next.js & Supabase**
 
 A clean, modern portfolio application designed specifically for writers.
 Easily manage your stories through a simple dashboard and present them in a polished, magazine-style layout.
 <br /><br />
 
-🚀 Features
+Features
 
 Story Management Dashboard – Add, edit, and organize your stories with an intuitive interface.
 
