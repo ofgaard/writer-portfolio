@@ -1,5 +1,7 @@
 **Writers Portfolio — Built with Next.js & Supabase**
 
+Demo: https://writer-portfolio-gamma.vercel.app/
+
 A clean, modern portfolio application designed specifically for writers.
 Easily manage your stories through a simple dashboard and present them in a polished, magazine-style layout.
 <br /><br />
