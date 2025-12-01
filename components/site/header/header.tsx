@@ -12,7 +12,7 @@ const Header = () => {
         <header className="sticky top-0 z-50 bg-background flex items-center justify-between py-3 px-8 border-b">
             <div className="flex flex-col items-center flex-1">
             <Link href="/home" className={`text-4xl font-bold tracking-tighter ${cormorantGaramond.className}`}>Oliver Fruergaard</Link>
-            <p className="font-bold hidden md:block">Writer's Portfolio</p>
+            <p className="font-bold hidden md:block">Writer&apos;s Portfolio</p>
 </div>  
             <div className="flex gap-10 items-center">
             <ThemeSwitcher />
