@@ -25,7 +25,7 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
           <div className="text-xl md:hidden">
             <p>{story.custom_tag && <span className="font-extrabold">{story.custom_tag}.</span>} {story.subheader}</p>
           </div>
-          <h1 className="text-4xl md:text-7xl">{story.title}</h1>
+          <h1 className="text-7xl">{story.title}</h1>
           <div className="text-2xl mt-10 hidden md:block">
             <p>{story.custom_tag && <span className="font-extrabold">{story.custom_tag}.</span>} {story.subheader}</p>
           </div>
