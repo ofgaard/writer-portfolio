@@ -25,7 +25,7 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
           <div className="text-xl md:hidden">
             <p>{story.custom_tag && <span className="font-extrabold">{story.custom_tag}.</span>} {story.subheader}</p>
           </div>
-          <h1 className="text-7xl">{story.title}</h1>
+          <h1 className="text-7xl mt-5 md:mt-0">{story.title}</h1>
           <div className="text-2xl mt-10 hidden md:block">
             <p>{story.custom_tag && <span className="font-extrabold">{story.custom_tag}.</span>} {story.subheader}</p>
           </div>
@@ -44,8 +44,8 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
         )}
       </div>
       <div className="text-xl lg:text-2xl max-w-[80%] md:max-w-[50%] mt-10 mx-auto">
-        <p className="mb-10 text-lg font-mono">This story was originally published elsewhere. This is a nicer looking, ad-free version. To read the original, <a href={story.url?.startsWith('http') ? story.url : `https://${story.url}`} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">click here</a>.</p>
-        <div className="whitespace-pre-line">
+        <p className="mb-10 text-xs md:text-lg font-mono">This story was originally published elsewhere. This is a nicer looking, ad-free version. To read the original, <a href={story.url?.startsWith('http') ? story.url : `https://${story.url}`} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">click here</a>.</p>
+        <div className="whitespace-pre-line text-2xl">
           {story.content}
         </div>
       </div>
