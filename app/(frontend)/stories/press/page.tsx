@@ -6,7 +6,7 @@ export default async function PressPage() {
   let debugInfo = "";
   
   try {
-    stories = await getStories("Journalism");
+    stories = await getStories("Press");
     debugInfo = `Found ${stories.length} stories with tag "Press"`;
   } catch (error) {
     console.error("Failed to load press stories:", error);
