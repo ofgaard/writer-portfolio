@@ -3,11 +3,10 @@ import StoryColumn from "@/components/site/stories/story-column";
 
 export default async function PressPage() {
   let stories: Story[];
-  let debugInfo = "";
+
   
   try {
     stories = await getStories("Press");
-    debugInfo = `Found ${stories.length} stories with tag "Press"`;
   } catch (error) {
     console.error("Failed to load press stories:", error);
     return <div>Error loading press stories.</div>;
@@ -16,8 +15,7 @@ export default async function PressPage() {
   return (
     <div className="flex flex-col gap-8 max-w-6xl mx-auto px-4 py-8">
       <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Press & Hello</h1>
-        <p className="text-xs text-gray-400">{debugInfo}</p>
+        <h1 className="text-4xl font-bold mb-4">Press & Communication</h1>
       </div>
 
       {stories.length > 0 ? (
