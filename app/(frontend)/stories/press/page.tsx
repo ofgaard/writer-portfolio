@@ -16,7 +16,7 @@ export default async function PressPage() {
   return (
     <div className="flex flex-col gap-8 max-w-6xl mx-auto px-4 py-8">
       <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Press & Communication</h1>
+        <h1 className="text-4xl font-bold mb-4">Press & Hello</h1>
         <p className="text-xs text-gray-400">{debugInfo}</p>
       </div>
 
