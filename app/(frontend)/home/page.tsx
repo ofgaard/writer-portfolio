@@ -11,7 +11,7 @@ export default async function Home() {
     }
 
     return (
-      <div className="flex flex-col items-center mt-10 gap-16 w-full min-h-screen py-2">
+      <div className="flex flex-col items-center mt-10 gap-0 md:gap-16 w-full min-h-screen py-2">
         {Object.entries(groupedStories).map(([position, stories]) => (
           stories.length === 1 
             ? <LargeStory key={position} story={stories[0]} />
