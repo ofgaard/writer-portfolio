@@ -1,11 +1,13 @@
 import { getStories, type Story } from "@/lib/helper-functions/backend/stories/get-stories";
 import StoryCard from "@/components/dashboard/stories/story-card";
 
+export const dynamic = 'force-dynamic';
+
 export default async function PressStoriesList() {
   let stories: Story[];
   
   try {
-    stories = await getStories("press");
+    stories = await getStories("Press");
   } catch (error) {
     console.error("Failed to load press stories:", error);
     return <div>Error loading press stories.</div>;
