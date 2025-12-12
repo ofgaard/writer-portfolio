@@ -21,7 +21,7 @@ export async function getStories(tag?: string) {
     .order("created_at", { ascending: false });
 
   if (tag) {
-    query = query.eq("tag", tag);
+    query = query.ilike("tag", tag);
   }
 
   const { data: stories, error } = await query;
@@ -32,6 +32,9 @@ export async function getStories(tag?: string) {
   }
 
   console.log(`Loaded ${stories?.length || 0} stories with tag: ${tag || 'all'}`);
+  if (stories && stories.length > 0) {
+    console.log("First story tags:", stories.slice(0, 3).map(s => s.tag));
+  }
   
   return stories || [];
 }
