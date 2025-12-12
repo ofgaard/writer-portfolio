@@ -26,7 +26,12 @@ export async function getStories(tag?: string) {
 
   const { data: stories, error } = await query;
 
-  if (error) throw new Error("Failed to load stories");
+  if (error) {
+    console.error("Database error:", error);
+    throw new Error("Failed to load stories");
+  }
 
-  return stories;
+  console.log(`Loaded ${stories?.length || 0} stories with tag: ${tag || 'all'}`);
+  
+  return stories || [];
 }
