@@ -5,7 +5,7 @@ export default async function ReportingStoriesList() {
   let stories: Story[];
   
   try {
-    stories = await getStories("journalism");
+    stories = await getStories("Journalism");
   } catch (error) {
     console.error("Failed to load stories:", error);
     return <div>Error loading stories.</div>;

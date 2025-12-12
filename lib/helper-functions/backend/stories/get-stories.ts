@@ -12,6 +12,10 @@ export interface Story {
   custom_tag: string | null;
 }
 
+function normalizeTag(tag: string) {
+  return tag.trim();
+}
+
 export async function getStories(tag?: string) {
   const supabase = await createClient();
   
@@ -21,7 +25,7 @@ export async function getStories(tag?: string) {
     .order("created_at", { ascending: false });
 
   if (tag) {
-    query = query.eq("tag", tag);
+    query = query.ilike("tag", normalizeTag(tag));
   }
 
   const { data: stories, error } = await query;

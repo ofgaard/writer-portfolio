@@ -1,14 +1,11 @@
 import { getStories, type Story } from "@/lib/helper-functions/backend/stories/get-stories";
 import StoryColumn from "@/components/site/stories/story-column";
 
-export const dynamic = 'force-dynamic';
-
 export default async function PressPage() {
   let stories: Story[];
   
   try {
     stories = await getStories("Press");
-    console.log("Press stories found:", stories.length);
   } catch (error) {
     console.error("Failed to load press stories:", error);
     return <div>Error loading press stories.</div>;
