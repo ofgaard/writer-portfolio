@@ -5,6 +5,7 @@ export default async function PressPage() {
   let stories: Story[];
   
   try {
+    console.log('hi');
     stories = await getStories("Press");
   } catch (error) {
     console.error("Failed to load press stories:", error);
