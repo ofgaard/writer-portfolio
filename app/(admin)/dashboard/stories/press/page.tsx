@@ -1,8 +1,6 @@
 import { getStories, type Story } from "@/lib/helper-functions/backend/stories/get-stories";
 import StoryCard from "@/components/dashboard/stories/story-card";
 
-export const dynamic = 'force-dynamic';
-
 export default async function PressStoriesList() {
   let stories: Story[];
   
