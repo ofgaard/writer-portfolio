@@ -30,6 +30,8 @@ export default function StoryGrid({ stories }: { stories: Story[] }) {
             alt={story.title || 'Story image'}
             width={500}
             height={300}
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            loading="lazy"
             className="object-center w-full h-56 md:h-72 object-cover"
           />
           <p className="font-extrabold uppercase">

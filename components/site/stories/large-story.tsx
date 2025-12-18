@@ -25,6 +25,7 @@ export default function LargeStory({ story }: { story: Story }) {
             alt={story.title}
             width={500}
             height={300}
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover h-64 md:h-full w-full"
             priority
           />
