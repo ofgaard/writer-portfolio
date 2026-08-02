@@ -25,11 +25,11 @@ export default function ProfileForm({ initialData, onSubmit }: ProfileFormProps)
     e.preventDefault();
     setIsSubmitting(true);
     
-    const formData = new FormData(e.currentTarget);
+    const formData = new FormData(e.currentTarget); 
     
     await onSubmit({
       photo: imageUrl,
-      header: formData.get("header") as string,
+      header: formData.get("header") as string, 
       bio: formData.get("bio") as string,
       linkedin: formData.get("linkedin") as string,
       facebook: formData.get("facebook") as string,

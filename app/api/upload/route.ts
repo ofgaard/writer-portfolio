@@ -1,15 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 
-// Add console.log for debugging
+
 console.log("AWS Credentials Check:", {
-  keyId: process.env.AWS_ACCESS_KEY_ID?.slice(0, 5), // Show only first 5 chars for security
+  keyId: process.env.AWS_ACCESS_KEY_ID?.slice(0, 5),
   hasSecret: !!process.env.AWS_SECRET_ACCESS_KEY,
   bucket: process.env.AWS_BUCKET_NAME
 });
 
 const s3 = new S3Client({
-  region: "eu-north-1", // Stockholm region
+  region: "eu-north-1", 
   credentials: {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!
@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
     }
 
-    // Log file details for debugging
+ 
     console.log("File details:", {
       name: file.name,
       type: file.type,

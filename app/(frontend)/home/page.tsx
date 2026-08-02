@@ -1,6 +1,6 @@
 import LargeStory from "@/components/site/stories/large-story";
 import StoryGrid from "@/components/site/stories/story-grid";
-import { getStoryPositions } from "@/lib/helper-functions/frontend/stories/get-story-positions";
+import { getStoryPositions } from "@/lib/functions/frontend/stories/get-story-positions";
 
 export const revalidate = 3600;
 

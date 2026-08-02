@@ -1,4 +1,4 @@
-import { getStories, type Story } from "@/lib/helper-functions/backend/stories/get-stories";
+import { getStories, type Story } from "@/lib/functions/backend/stories/get-stories";
 import StoryCard from "@/components/dashboard/stories/story-card";
 
 export default async function StoriesList() {

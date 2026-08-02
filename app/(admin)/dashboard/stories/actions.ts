@@ -1,5 +1,7 @@
 "use server";
+import { Story } from "@/lib/types/story";
 import { createClient } from "@/lib/supabase/server";
+import { redirect } from "next/navigation";
 
 interface StoryData {
   title: string;
@@ -124,4 +126,21 @@ async function handleDeleteStory(formData: FormData) {
   await deleteStory(storyId);
 }
 
-export { addStory, addStoryToRow, handleAddToRow, updatePosition, handleUpdatePosition, handleDeleteStory };
+const handleCreateStory = async (data: Partial<Story>) => {
+    
+    if (!data.title || !data.content) {
+      throw new Error("Title and content are required");
+    }
+
+    await addStory({
+      title: data.title,
+      content: data.content,
+      image: data.image || undefined,
+      url: data.url || undefined,
+      tag: data.tag || undefined,
+      custom_tag: data.custom_tag || undefined,
+    });
+    redirect("/dashboard/stories");
+  }
+
+export { addStory, addStoryToRow, handleAddToRow, updatePosition, handleUpdatePosition, handleDeleteStory, handleCreateStory };
