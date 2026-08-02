@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { getSafeImageUrl } from "@/lib/utils";
 
 interface UploadImageProps {
   onUploadComplete?: (url: string) => void;
@@ -14,7 +15,7 @@ export default function UploadImage({ onUploadComplete, currentImage }: UploadIm
   const [imageUrl, setImageUrl] = useState<string>("");
   const [loading, setLoading] = useState(false);
 
-  const displayImage = imageUrl || currentImage;
+  const displayImage = getSafeImageUrl(imageUrl || currentImage, "");
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {

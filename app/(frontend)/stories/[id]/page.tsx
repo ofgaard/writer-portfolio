@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import Image from "next/image";
+import { getSafeImageUrl } from "@/lib/utils";
 
 export default async function StoryPage({ params }: { params: Promise<{ id: string }> }) {
   const supabase = await createClient();
@@ -32,10 +33,10 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
     <p>{story.custom_tag && <span className="font-extrabold">{story.custom_tag}.</span>} {story.subheader}</p>
   </div>
 </div>
-          {story.image && (
+          {getSafeImageUrl(story.image, "") && (
           <div className="relative w-full hidden md:block md:w-1/2 h-full">
             <Image 
-              src={story.image} 
+              src={getSafeImageUrl(story.image, "")} 
               alt={story.title}
               fill
               quality={100}
