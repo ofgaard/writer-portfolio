@@ -70,7 +70,7 @@ export default function StoryCard({ story }: { story: Story }) {
             <div className="flex flex-col gap-5">
               <div className="relative h-48 w-full">
                 <Image
-                  src={story.image || "https://picsum.photos/500/400"}
+                  src={getSafeImageUrl(story.image, "https://picsum.photos/500/400")}
                   alt={story.title}
                   fill
                   className="object-cover"

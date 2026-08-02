@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { createClient } from "@/lib/supabase/server";
 import { Linkedin, Facebook, Instagram } from "lucide-react";
+import { getSafeImageUrl } from "@/lib/utils";
 
 export default async function ProfilePage() {
   const supabase = await createClient();
@@ -25,9 +26,9 @@ export default async function ProfilePage() {
   return (
     <div className="flex flex-col gap-8 max-w-4xl mx-auto px-4 py-8">
       <div className="flex flex-col md:flex-row-reverse gap-8 items-center md:items-stretch">
-        {profile.photo && (
+        {profile.photo && getSafeImageUrl(profile.photo, "") && (
           <Image
-            src={profile.photo}
+            src={getSafeImageUrl(profile.photo, "")}
             alt={profile.header || "Profile photo"}
             width={200}
             height={200}

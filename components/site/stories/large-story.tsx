@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { getSafeImageUrl } from "@/lib/utils";
 
 type Story = {
   id: number;
@@ -18,10 +19,7 @@ export default function LargeStory({ story }: { story: Story }) {
       <div className="flex flex-col md:flex-row justify-between w-full lg:w-[70%] h-auto md:h-96 p-4 md:p-5 mx-auto">
         <div className="w-full md:w-1/2">
           <Image
-            src={
-              story.image ||
-              "https://picsum.photos/500/300"
-            }
+            src={getSafeImageUrl(story.image, "https://picsum.photos/500/300")}
             alt={story.title}
             width={500}
             height={300}

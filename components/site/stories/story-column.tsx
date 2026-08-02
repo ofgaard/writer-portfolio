@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Story } from "@/lib/types/story";
+import { getSafeImageUrl } from "@/lib/utils";
 
 
 
@@ -14,10 +15,7 @@ export default function StoryColumn({ stories }: { stories: Story[] }) {
           className="p-6 w-full flex flex-col gap-4 text-center rounded-lg"
         >
           <Image
-            src={
-              story.image ||
-              "https://picsum.photos/500/300"
-            }
+            src={getSafeImageUrl(story.image, "https://picsum.photos/500/300")}
             alt={story.title || 'Story image'}
             width={500}
             height={300}

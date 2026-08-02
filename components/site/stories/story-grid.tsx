@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Story } from "@/lib/types/story";
+import { getSafeImageUrl } from "@/lib/utils";
 
 
 export default function StoryGrid({ stories }: { stories: Story[] }) {
@@ -23,10 +24,7 @@ export default function StoryGrid({ stories }: { stories: Story[] }) {
           className={`p-4 w-full ${getWidthClass()} flex flex-col gap-3 text-center`}
         >
           <Image
-            src={
-              story.image ||
-              "https://picsum.photos/500/300"
-            }
+            src={getSafeImageUrl(story.image, "https://picsum.photos/500/300")}
             alt={story.title || 'Story image'}
             width={500}
             height={300}
