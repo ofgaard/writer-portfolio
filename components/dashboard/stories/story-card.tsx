@@ -10,6 +10,7 @@ import { Story } from "@/lib/types/story";
 import { deleteStory, handleUpdatePosition } from "@/app/(admin)/dashboard/stories/actions";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { getSafeImageUrl } from "@/lib/utils";
 
 export default function StoryCard({ story }: { story: Story }) {
   const router = useRouter();
