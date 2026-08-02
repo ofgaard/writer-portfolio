@@ -1,20 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import { createClient } from "@/lib/supabase/server";
 
-
-console.log("AWS Credentials Check:", {
-  keyId: process.env.AWS_ACCESS_KEY_ID?.slice(0, 5),
-  hasSecret: !!process.env.AWS_SECRET_ACCESS_KEY,
-  bucket: process.env.AWS_BUCKET_NAME
-});
-
-const s3 = new S3Client({
-  region: "eu-north-1", 
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!
-  }
-});
+const STORAGE_BUCKET = process.env.SUPABASE_STORAGE_BUCKET || "images";
 
 export async function POST(req: NextRequest) {
   try {
@@ -25,33 +12,33 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
     }
 
- 
-    console.log("File details:", {
-      name: file.name,
-      type: file.type,
-      size: file.size
-    });
+    const supabase = await createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
-    const buffer = Buffer.from(await file.arrayBuffer());
-    const fileName = `${Date.now()}-${file.name.replace(/\s/g, '-')}`;
-
-    try {
-      await s3.send(
-        new PutObjectCommand({
-          Bucket: process.env.AWS_BUCKET_NAME!,
-          Key: fileName,
-          Body: buffer,
-          ContentType: file.type,
-        })
-      );
-    } catch (s3Error) {
-      console.error("S3 Upload Error:", s3Error);
-      throw s3Error;
+    if (!user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const url = `https://${process.env.AWS_BUCKET_NAME}.s3.eu-north-1.amazonaws.com/${fileName}`;
-    
-    return NextResponse.json({ url });
+    const fileName = `${Date.now()}-${file.name.replace(/\s/g, "-")}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from(STORAGE_BUCKET)
+      .upload(fileName, file, {
+        contentType: file.type,
+      });
+
+    if (uploadError) {
+      console.error("Supabase Storage upload error:", uploadError);
+      throw uploadError;
+    }
+
+    const {
+      data: { publicUrl },
+    } = supabase.storage.from(STORAGE_BUCKET).getPublicUrl(fileName);
+
+    return NextResponse.json({ url: publicUrl });
   } catch (error) {
     console.error("Upload route error:", error);
     return NextResponse.json(
